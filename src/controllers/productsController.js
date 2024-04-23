@@ -132,7 +132,7 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
     const productId = parseInt(req.params.pid)
     if (isNaN(productId) || productId <= 0) {
-        return res.status(400).json({ error: 'El ID del producto debe ser un número mayor que 0' })
+        return res.status(404).json({ error: 'El ID del producto debe ser un número mayor que 0' })
     }
 
     try {

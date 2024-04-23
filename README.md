@@ -1,37 +1,58 @@
-# Entrega final - React Js - Reschke Nicolas
-
-## Ecommerce PastaLú - Tienda Virtual
-
-[![N|Solid](https://www.48hourslogo.com/48hourslogo_data/2018/06/22/74312_1529625820.jpg)](https://nicolasreschke-cv-online.netlify.app/)
-
-PastaLú es una tienda virtual donde podes hacer tus pedidos de manera fácil y comoda.
-
-Demo: https://entrega-final-react-js-reschkenicolas.netlify.app/
+<h1 align="center" id="title">1era Pre Entrega - BackEnd</h1>
 
 
+El proyecto es un un servidor que contiene los endpoints y servicios necesarios para gestionar los productos y carritos de compra en un e-commerce
 
-## Plugins
+## Tabla de Contenido
 
-| Plugin | README |
+- [Consignas](#consignas)
+- [Dependencies](#dependencies)
+- [Postman](#postman)
+- [Handlebars](#handlebars)
+- [EndPoints](#endpoints)
+- [Errores](#errores)
+
+
+## Consignas
+*   Desarrollar el servidor basado en Node.JS y express
+*   Manejo de productos (GET, POST, PUT, DELETE)
+*   Manejo de carritos (GET, POST, DELETE)
+*   Utilización de file system
+
+
+## Dependencias
+| Dependencias | README |
 | ------ | ------ |
-| bootstrap | [5.3.2] |
-| bootstrap-icons | [1.11.1] |
-| firebase | [10.6.0] |
-| react | [18.2.0] |
-| react-bootstrap | [2.9.0] |
-| react-dom | [18.2.0] |
-| react-icons | [4.11.0] |
-| react-router-dom | [6.18.0] |
+| bootstrap | [5.3.3] |
+| express | [^4.19.2] |
+| express-handlebars | [^7.1.2] |
 
-## Credenciales de Firebase
 
-*Ver en el mensaje de la plataforma
+## Postman
+Se utilizó Postman para ver todo el flujo de información
+En este enlace, pueden acceder a mi colección de Postman, para facilitarles el ruteo
+* [postman.json](https://github.com/NicolasReschke/1era_pre_entrega_BackEnd/blob/main/Postman/1era_pre_entrega_BackEnd.postman_collection.json)
 
-### React + Vite
+## Handlebars
+Incorporé handlebars y bootstrap para darle un poco de "vida" a la app. Solo lo hice con el método "GET" de products.
+Un detalle: utilicé una validación para no tener el error 'Error [ERR_HTTP_HEADERS_SENT]'
+Esta validación tiene en cuenta el formato solicitado, si es json devuelve un resultado con formato .json, y si el formato es html, devuelve un render del handlebar.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## EndPoints
+Utilicé dos grupos de Endpoints
+Para manejar los productos:
+    * GET (getAllProducts)
+    * GET (getProductById)
+    * POST (addProduct)
+    * PUT (updateProduct)
+    * DELETE (deleteProduct)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para manejar el/los carritos:
+    * POST (createCart y addProductToCart)
+    * GET (getCartProducts)
+    * DELETE (deleteCart)
+
+
+## Errores
+Para el manejo de errores, ya sea del usuario o del servidor, utilicé status(404) cuando el servidor no encontraba el contenido solicitado, y para manejar los errores internos del servidor, status(500)
