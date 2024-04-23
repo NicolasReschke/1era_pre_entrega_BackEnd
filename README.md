@@ -1,7 +1,8 @@
 <h1 align="center" id="title">1era Pre Entrega - BackEnd</h1>
 
 
-El proyecto es un un servidor que contiene los endpoints y servicios necesarios para gestionar los productos y carritos de compra en un e-commerce
+El proyecto es un un servidor que contiene los endpoints y servicios necesarios para gestionar los productos y carritos de compra en un e-commerce.
+La información que se utilizó es de un [proyecto](https://entrega-final-react-js-reschkenicolas.netlify.app/) anterior de React.
 
 ## Tabla de Contenido
 
@@ -29,9 +30,9 @@ El proyecto es un un servidor que contiene los endpoints y servicios necesarios 
 
 
 ## Postman
-Se utilizó Postman para ver todo el flujo de información
+Se utilizó Postman para ver todo el flujo de información.
 En este enlace, pueden acceder a mi colección de Postman, para facilitarles el ruteo
-* [postman.json](https://github.com/NicolasReschke/1era_pre_entrega_BackEnd/blob/main/Postman/1era_pre_entrega_BackEnd.postman_collection.json)
+* [postman.json](https://github.com/NicolasReschke/1era_pre_entrega_BackEnd/blob/main/Postman/1era_pre_entrega_BackEnd.postman_collection.json).
 
 ## Handlebars
 Incorporé handlebars y bootstrap para darle un poco de "vida" a la app. Solo lo hice con el método "GET" de products.
@@ -55,4 +56,4 @@ Para manejar el/los carritos:
 
 
 ## Errores
-Para el manejo de errores, ya sea del usuario o del servidor, utilicé status(404) cuando el servidor no encontraba el contenido solicitado, y para manejar los errores internos del servidor, status(500)
+Para el manejo de errores, ya sea del usuario o del servidor, utilicé status(404) cuando el servidor no encontraba el contenido solicitado, y para manejar los errores internos del servidor, status(500).
