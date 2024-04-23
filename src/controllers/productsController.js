@@ -11,11 +11,15 @@ exports.getAllProducts = async (req, res) => {
         const limit = parseInt(req.query.limit)
         if (!isNaN(limit) && limit > 0) {
             products = products.slice(0, limit)
-        }else if (req.query.limit !== undefined) {
-            return res.status(404).send('<p>Error: La cantidad de productos ingresada debe ser un número mayor q 0.</p>')
+        } else if (req.query.limit !== undefined) {
+            return res.status(404).send('<p>Error: La cantidad de productos ingresada debe ser un número mayor que 0.</p>')
         }
 
-        res.json(products)
+        if (req.query.format === 'json') {
+            res.json(products)
+        } else {
+            res.render('allProducts', { products })
+        }
     } catch (error) {
         console.error(error)
         res.status(500).json({ error: 'Error interno del servidor' })
@@ -28,14 +32,27 @@ exports.getProductById = async (req, res) => {
     try {
         const data = await fs.readFile(productsFilePath, 'utf8')
         const products = JSON.parse(data)
-
         const product = products.find(p => p.id === productId)
         if (!product) {
             const productList = products.map(({ id, title }) => ({ id, title }))
-            return res.status(404).json({ error: 'ID no corresponde a ningún producto. Recuerde que el ID debe ser un numero mayor q 0. A continuación, le detallaremos una lista con los productos y sus IDs existentes:', products: productList })
+            if (req.query.format === 'json') {
+                return res.status(404).json({ 
+                    error: 'ID no corresponde a ningún producto. Recuerde que el ID debe ser un número mayor que 0. A continuación, le detallaremos una lista con los productos y sus IDs existentes:', 
+                    products: productList 
+                })
+            } else {
+                return res.status(404).render('error', { 
+                    message: 'Producto no encontrado. Aquí está una lista de productos disponibles.', 
+                    products: productList 
+                })
+            }
         }
 
-        res.status(200).json(product)
+        if (req.query.format === 'json') {
+            res.status(200).json(product)
+        } else {
+            res.render('productDetail', { product })
+        }
     } catch (error) {
         console.error(error)
         res.status(500).json({ error: 'Error interno del servidor' })

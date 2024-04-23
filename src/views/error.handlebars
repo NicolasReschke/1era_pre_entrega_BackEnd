@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <h1>No se encontró el producto con este ID</h1>
+    <h3 class="mt-3">Lista de productos disponibles:</h3>
+    <ul class="list-group">
+        {{#each products}}
+        <li class="list-group-item">
+            <a href="/api/products/{{this.id}}">{{this.title}} (ID: {{this.id}})</a>
+        </li>
+        {{/each}}
+    </ul>
+    <div>
+        <a href="/api/products" class="btn btn-primary btn-block">Volver a Todos los Productos</a>
+    </div>
+</div>

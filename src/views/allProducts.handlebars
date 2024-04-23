@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h1>Lista de productos</h1>
+    <form action="/api/products" method="GET">
+        <label for="limit">Selecciona el límite:</label>
+        <input type="number" id="limit" name="limit" min="1" max="" value="{{ currentLimit }}">
+        <button type="submit">Aplicar</button>
+    </form>
+    {{#if products}}
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Thumbnail</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{title}}</td>
+                        <td>{{description}}</td>
+                        <td>${{price}}</td>
+                        <td><img src="{{thumbnail}}" alt="{{title}} thumbnail" class="img-fluid" style="width: 50px;"></td>
+                        <td>
+                            <a href="/api/products/{{id}}" class="btn btn-info">View Details</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>No hay productos disponibles! 😥</p>
+    {{/if}}
+</div>
